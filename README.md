@@ -19,8 +19,13 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
 
 ## Release Notes
 
-### Version 1.0.0
+### Version 1.0.1
 
-- Initial release
+- Added officials
+
+## Development
+Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>
+
+Publisher Diode IoT Inc. <<info@diodeiot.com>>
 
 ---
