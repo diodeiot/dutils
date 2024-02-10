@@ -14,3 +14,7 @@ All notable changes to this project will be documented in this file.
 
 - Added C/C++ source and header file generation commands.
 - Added Contribution section
+
+## Version 1.1.1
+
+- Updated marketplace keywords

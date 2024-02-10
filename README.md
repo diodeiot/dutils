@@ -23,10 +23,9 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
   
 ## Release Notes
 
-### Version 1.1.0
+### Version 1.1.1
 
-- Added C/C++ source and header file generation commands.
-- Added Contribution section
+- Updated marketplace keywords
 
 ## Development
 Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>

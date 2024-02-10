@@ -2,7 +2,7 @@
   "name": "dutils",
   "displayName": "dutils",
   "description": "Utility commands",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "diodeiot",
   "engines": {
     "vscode": "^1.30.0"
@@ -25,7 +25,9 @@
   "keywords": [
     "utils",
     "C/C++",
-    "include guard"
+    "include guard",
+    "source file",
+    "header file"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
