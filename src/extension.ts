@@ -1,23 +1,14 @@
 import * as path from "path";
+
 import * as vscode from "vscode";
-import { FileNameSchema } from "./utility";
 import z from "zod";
 
-type FileLang = "C" | "C++";
-
-const FileExtMap = Object.freeze({
-	"C": "c",
-	"C++": "cpp",
-});
+import { FileNameSchema } from "./models/schemas/file";
+import { FileExtMap, FileLang } from "./models/types/file";
+import { fileName2MacroName, getFileContent } from "./fileContent";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log("activated");
-
-	const fileName2MacroName = (fileName: string) => {
-		let macroName = fileName.toUpperCase();
-		macroName = macroName.replace(/[^a-zA-Z0-9]/g, '_');
-		return macroName;
-	};
 
 	const goToLastLine = (editor: vscode.TextEditor) => {
 		const document = editor.document;
@@ -37,11 +28,11 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		const filePath = activeTextEditor.document.uri.fsPath
+		const filePath = activeTextEditor.document.uri.fsPath;
 		const fileName = path.basename(filePath);
 
 		let content = activeTextEditor.document.getText(activeTextEditor.selection);
-		if (content.length == 0) {
+		if (content.length === 0) {
 			content = activeTextEditor.document.getText();
 		}
 
@@ -58,7 +49,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	const getFileName = async () => {
-		const filename = vscode.window.showInputBox({
+		const filename = await vscode.window.showInputBox({
 			title: "File name",
 			prompt: "File name",
 			placeHolder: "Please enter file name",
@@ -67,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
 					FileNameSchema.parse(value);
 				} catch (error) {
 					if (error instanceof z.ZodError) {
-						return error.errors[0].message
+						return error.errors[0].message;
 					}
 				}
 			}
@@ -82,32 +73,22 @@ export function activate(context: vscode.ExtensionContext) {
 			const document = await vscode.workspace.openTextDocument(fileuri);
 			await vscode.window.showTextDocument(document, { preview: false });
 		}
-	}
+	};
 
-	const createHeaderFile = (dir: string, name: string) => {
-		const filename = name + ".h";
-		const filePath = path.join(dir, filename);
-
-		const m = fileName2MacroName(filename);
-		const content = `#ifndef ${m}\n#define ${m}\n\n#endif /*${m}*/`;
-
-		createFile(filePath, content, true);
+	const createHeaderFile = (dir: string, name: string, lang: FileLang) => {
+		const content = getFileContent(name, lang, "Header");
+		createFile(path.join(dir, name + ".h"), content, true);
 	};
 
 	const createSourceFile = (dir: string, name: string, lang: FileLang) => {
-		const filename = name + "." + FileExtMap[lang];
-		const headerFile = name + ".h";
-		const filePath = path.join(dir, filename);
-
-		const content = `#include "${headerFile}"\n`;
-
-		createFile(filePath, content, true);
+		const content = getFileContent(name, lang, "Source");
+		createFile(path.join(dir, name + "." + FileExtMap[lang]), content, true);
 	};
 
-	const createFiles = (dir: string, basename: string, lang: FileLang) => {
-		createHeaderFile(dir, basename);
-		createSourceFile(dir, basename, lang);
-	}
+	const createFiles = (dir: string, name: string, lang: FileLang) => {
+		createHeaderFile(dir, name, lang);
+		createSourceFile(dir, name, lang);
+	};
 
 	const createFilesHandler = async (fileLang: FileLang) => {
 		let dir;
@@ -141,13 +122,18 @@ export function activate(context: vscode.ExtensionContext) {
 
 		console.log("directory=", dir);
 
-		let filename = await getFileName();
-		filename = FileNameSchema.parse(filename);
-		if (!filename) {
+		let filename;
+		try {
+			filename = await getFileName();
+			if (!filename) {
+				return;
+			}
+			filename = FileNameSchema.parse(filename);
+		} catch (error) {
 			return;
 		}
 		console.log("filename=", filename);
-		createFiles(dir, filename, fileLang);
+		createFiles(dir, filename!, fileLang);
 	};
 
 	context.subscriptions.push(vscode.commands.registerCommand("dutils.createCFiles", () => {

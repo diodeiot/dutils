@@ -18,3 +18,7 @@ All notable changes to this project will be documented in this file.
 ## Version 1.1.1
 
 - Updated marketplace keywords
+
+## Version 1.2.0
+
+- Added placing sample C++ class to the generated C++ files feature.

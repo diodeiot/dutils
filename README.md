@@ -23,9 +23,9 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
   
 ## Release Notes
 
-### Version 1.1.1
+### Version 1.2.0
 
-- Updated marketplace keywords
+- Added placing sample C++ class to the generated C++ files feature.
 
 ## Development
 Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>
