@@ -17,15 +17,24 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
 
 - **dutils: Add include guard**: Adds include guard to the active file. If selection is empty, entire file content will be enclosed by the generated include guard. If selection is not empty, entire file content will be replaced by the include guard and selection.
 
+- **dutils: Create C source & header files**: Creates C source and header files. If any file is active, these files will be created under that file's directory. Otherwise, directory will be workspace root.
+  
+- **dutils: Create C++ source & header files**: Creates C++ source and header files. If any file is active, these files will be created under that file's directory. Otherwise, directory will be workspace root.
+  
 ## Release Notes
 
-### Version 1.0.1
+### Version 1.1.0
 
-- Added officials
+- Added C/C++ source and header file generation commands.
+- Added Contribution section
 
 ## Development
 Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>
 
 Publisher Diode IoT Inc. <<info@diodeiot.com>>
+
+## Contribution
+
+Contributions to the repository are welcome.
 
 ---

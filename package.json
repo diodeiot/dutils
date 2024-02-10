@@ -2,7 +2,7 @@
   "name": "dutils",
   "displayName": "dutils",
   "description": "Utility commands",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "publisher": "diodeiot",
   "engines": {
     "vscode": "^1.30.0"
@@ -34,6 +34,14 @@
       {
         "command": "dutils.addIncludeGuard",
         "title": "dutils: Add include guard"
+      },
+      {
+        "command": "dutils.createCFiles",
+        "title": "dutils: Create C source & header files"
+      },
+      {
+        "command": "dutils.createCppFiles",
+        "title": "dutils: Create C++ source & header files"
       }
     ]
   },
@@ -55,5 +63,8 @@
     "@vscode/test-electron": "^2.3.9",
     "eslint": "^8.56.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
   }
 }
