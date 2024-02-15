@@ -6,6 +6,7 @@ import z from "zod";
 import { FileNameSchema } from "./models/schemas/file";
 import { FileExtMap, FileLang } from "./models/types/file";
 import { fileName2MacroName, getFileContent } from "./fileContent";
+import { bytesToCArray, hex2Bytes, hexClean } from "./utility";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log("activated");
@@ -142,6 +143,30 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(vscode.commands.registerCommand("dutils.createCppFiles", () => {
 		createFilesHandler("C++");
+	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand("dutils.hex2bytes", () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const selection = editor.selection;
+			const selectedText = editor.document.getText(selection);
+			editor.edit(editBuilder => {
+				const hex = hexClean(selectedText);
+				editBuilder.replace(selection, hex2Bytes(Buffer.from(hex, "hex")));
+			});
+		}
+	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand("dutils.hex2CArr", () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const selection = editor.selection;
+			const selectedText = editor.document.getText(selection);
+			editor.edit(editBuilder => {
+				const hex = hexClean(selectedText);
+				editBuilder.replace(selection, bytesToCArray(Buffer.from(hex, "hex")));
+			});
+		}
 	}));
 }
 

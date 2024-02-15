@@ -21,11 +21,16 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
   
 - **dutils: Create C++ source & header files**: Creates C++ source and header files. If any file is active, these files will be created under that file's directory. Otherwise, directory will be workspace root.
   
+- **dutils: Convert hex string to comma seperated bytes**: Converts hex string to comma seperated bytes.
+
+- **dutils: Convert hex string to C/C++ array**: Converts hex string to C/C++ bytes array.
+
 ## Release Notes
 
-### Version 1.2.0
+### Version 1.3.0
 
-- Added placing sample C++ class to the generated C++ files feature.
+- Added Feature: Converting hex string to comma seperated bytes.
+- Added Feature: Converting hex string to C/C++ byte array.
 
 ## Development
 Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>
