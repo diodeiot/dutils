@@ -8,7 +8,7 @@ export function hexClean(str: string) {
 export function hex2Bytes(bytes: Buffer) {
     let arr = "";
     for (let b of bytes) {
-        arr += "0x" + b.toString(16).toUpperCase() + ", ";
+        arr += "0x" + b.toString(16).padStart(2, "0").toUpperCase() + ", ";
     }
     return arr.slice(0, arr.length - 2);
 }

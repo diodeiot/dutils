@@ -2,7 +2,7 @@
   "name": "dutils",
   "displayName": "dutils",
   "description": "Utility commands",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "publisher": "diodeiot",
   "engines": {
     "vscode": "^1.30.0"

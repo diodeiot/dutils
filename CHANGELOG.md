@@ -27,3 +27,7 @@ All notable changes to this project will be documented in this file.
 
 - Added Feature: Converting hex string to comma seperated bytes.
 - Added Feature: Converting hex string to C/C++ byte array.
+
+## Version 1.3.1
+
+- Fixed Bug: Padding bytes with zero.

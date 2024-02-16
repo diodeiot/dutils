@@ -27,10 +27,9 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
 
 ## Release Notes
 
-### Version 1.3.0
+### Version 1.3.1
 
-- Added Feature: Converting hex string to comma seperated bytes.
-- Added Feature: Converting hex string to C/C++ byte array.
+- Fixed Bug: Padding bytes with zero.
 
 ## Development
 Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>
