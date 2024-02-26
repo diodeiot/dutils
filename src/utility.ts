@@ -1,7 +1,8 @@
 
 
 export function hexClean(str: string) {
-    str = str.replace(/[^0-9a-fA-F]+/g, "");
+    str = str.replace(/0x/gi, ""); //remove all 0x occurences
+    str = str.replace(/[^0-9a-f]+/gi, ""); //remove all non-hex chars
     return str.toUpperCase();
 }
 
