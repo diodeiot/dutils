@@ -25,11 +25,17 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
 
 - **dutils: Convert hex string to C/C++ array**: Converts hex string to C/C++ bytes array.
 
+- **dutils: Normalize hex string**: Normalizes hex string.
+  
+- **dutils: Normalize hex string with reversed order**: Normalizes hex string with reserve order.
+  
 ## Release Notes
 
-### Version 1.3.1
+### Version 1.4.0
 
-- Fixed Bug: Padding bytes with zero.
+- New Feature: Removing 0x prefixes while parsing hex string
+- New Feature: Hex string normalization
+- New Feature: Hex string normalization with reverse order
 
 ## Development
 Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>

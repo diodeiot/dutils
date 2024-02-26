@@ -31,3 +31,9 @@ All notable changes to this project will be documented in this file.
 ## Version 1.3.1
 
 - Fixed Bug: Padding bytes with zero.
+
+## Version 1.4.0
+
+- New Feature: Removing 0x prefixes while parsing hex string
+- New Feature: Hex string normalization
+- New Feature: Hex string normalization with reverse order
