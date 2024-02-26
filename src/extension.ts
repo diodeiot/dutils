@@ -6,7 +6,7 @@ import z from "zod";
 import { FileNameSchema } from "./models/schemas/file";
 import { FileExtMap, FileLang } from "./models/types/file";
 import { fileName2MacroName, getFileContent } from "./fileContent";
-import { bytesToCArray, hex2Bytes, hexClean } from "./utility";
+import { bytesToCArray, hex2Bytes, hexClean, normalize } from "./utility";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log("activated");
@@ -165,6 +165,17 @@ export function activate(context: vscode.ExtensionContext) {
 			editor.edit(editBuilder => {
 				const hex = hexClean(selectedText);
 				editBuilder.replace(selection, bytesToCArray(Buffer.from(hex, "hex")));
+			});
+		}
+	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand("dutils.normalize", () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const selection = editor.selection;
+			const selectedText = editor.document.getText(selection);
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, normalize(selectedText));
 			});
 		}
 	}));

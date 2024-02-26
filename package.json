@@ -52,6 +52,10 @@
       {
         "command": "dutils.hex2CArr",
         "title": "dutils: Convert hex string to C/C++ array"
+      },
+      {
+        "command": "dutils.normalize",
+        "title": "dutils: Normalize hex string"
       }
     ]
   },

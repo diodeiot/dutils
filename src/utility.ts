@@ -18,3 +18,12 @@ export function bytesToCArray(bytes: Buffer) {
     const content = hex2Bytes(bytes);
     return `const uint8_t dummy[${bytes.length}] = {${content}};`;
 }
+
+export function normalize(str: string, reversed: boolean = false): string {
+    const hex = hexClean(str);
+    let b = Buffer.from(hex, "hex");
+    if (reversed) {
+        b = b.reverse();
+    }
+    return b.toString("hex").toUpperCase();
+}
