@@ -179,6 +179,17 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		}
 	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand("dutils.normalizeRev", () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const selection = editor.selection;
+			const selectedText = editor.document.getText(selection);
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, normalize(selectedText, true));
+			});
+		}
+	}));
 }
 
 export function deactivate() {

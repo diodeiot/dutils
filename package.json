@@ -56,6 +56,10 @@
       {
         "command": "dutils.normalize",
         "title": "dutils: Normalize hex string"
+      },
+      {
+        "command": "dutils.normalizeRev",
+        "title": "dutils: Normalize hex string with reversed order"
       }
     ]
   },
