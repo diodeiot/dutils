@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		const m = fileName2MacroName(fileName);
-		let newContent = `#ifndef ${m}\n#define ${m}\n${content}\n#endif /*${m}*/`;
+		let newContent = `#ifndef ${m}\n#define ${m}\n\n${content}\n\n#endif /*${m}*/`;
 		activeTextEditor.edit(editBuilder => {
 			const entireRange = new vscode.Range(
 				activeTextEditor.document.positionAt(0),
