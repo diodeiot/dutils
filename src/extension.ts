@@ -194,6 +194,27 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		}
 	}));
+
+	context.subscriptions.push(vscode.workspace.onDidCreateFiles(async (event) => {
+		for (let file of event.files) {
+			const fileUri = vscode.Uri.file(file.path);
+			const fileContentBuffer = await vscode.workspace.fs.readFile(fileUri);
+			const fileContent = Buffer.from(fileContentBuffer).toString("utf-8");
+			if (fileContent.length > 0) {
+				return;
+			}
+			if (path.parse(file.path).ext.toLowerCase() !== ".h") {
+				return;
+			}
+			const document = await vscode.workspace.openTextDocument(fileUri);
+			const fileName = path.parse(file.path).name;
+			const newFileContent = getFileContent(fileName, "C", "Header");
+			const edit = new vscode.WorkspaceEdit();
+			edit.insert(fileUri, new vscode.Position(0, 0), newFileContent);
+			await vscode.workspace.applyEdit(edit);
+			await document.save();
+		}
+	}));
 }
 
 export function deactivate() {
