@@ -37,3 +37,10 @@ All notable changes to this project will be documented in this file.
 - New Feature: Removing 0x prefixes while parsing hex string
 - New Feature: Hex string normalization
 - New Feature: Hex string normalization with reverse order
+
+## Version 1.5.0
+
+- New Feature: Creating files in directory that active editor has.
+- New Feature: Adding include guard when empty header file is created.
+- Fixed: Adding new lines between file content and adding include guard.
+- Fixed: Adding new line at the end of file.

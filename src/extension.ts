@@ -7,6 +7,7 @@ import { FileNameSchema } from "./models/schemas/file";
 import { FileExtMap, FileLang } from "./models/types/file";
 import { fileName2MacroName, getFileContent } from "./fileContent";
 import { bytesToCArray, hex2Bytes, hexClean, normalize } from "./utility";
+import { getConfig } from "./config";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log("activated");
@@ -196,6 +197,10 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	context.subscriptions.push(vscode.workspace.onDidCreateFiles(async (event) => {
+		const config = getConfig();
+		if (!config.include_guard_on_header_file_creation) {
+			return;
+		}
 		for (let file of event.files) {
 			const fileUri = vscode.Uri.file(file.path);
 			const fileContentBuffer = await vscode.workspace.fs.readFile(fileUri);

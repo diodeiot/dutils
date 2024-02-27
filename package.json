@@ -2,7 +2,7 @@
   "name": "dutils",
   "displayName": "dutils",
   "description": "Utility commands",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "publisher": "diodeiot",
   "engines": {
     "vscode": "^1.30.0"
@@ -63,7 +63,16 @@
         "command": "dutils.normalizeRev",
         "title": "dutils: Normalize hex string with reversed order"
       }
-    ]
+    ],
+    "configuration": {
+      "properties": {
+        "dutils.include-guard-on-header-file-creation": {
+          "description": "Controls auto inserting include guard on header file creation",
+          "type": "boolean",
+          "default": true
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

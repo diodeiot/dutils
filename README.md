@@ -28,14 +28,23 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
 - **dutils: Normalize hex string**: Normalizes hex string.
   
 - **dutils: Normalize hex string with reversed order**: Normalizes hex string with reserve order.
-  
+
+## Triggered Actions
+- Include guard will be inserted when empty header file is created. 
+
+## Options
+| Option                                         | Description                                                   | Default |
+| ---------------------------------------------- | ------------------------------------------------------------- | ------- |
+| `dutils.include-guard-on-header-file-creation` | Controls auto inserting include guard on header file creation | true    |
+
 ## Release Notes
 
-### Version 1.4.0
+### Version 1.5.0
 
-- New Feature: Removing 0x prefixes while parsing hex string
-- New Feature: Hex string normalization
-- New Feature: Hex string normalization with reverse order
+- New Feature: Creating files in directory that active editor has.
+- New Feature: Adding include guard when empty header file is created.
+- Fixed: Adding new lines between file content and adding include guard.
+- Fixed: Adding new line at the end of file.
 
 ## Development
 Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>
