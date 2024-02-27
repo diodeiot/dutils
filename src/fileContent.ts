@@ -25,11 +25,10 @@ export function getFileContent(name: string, lang: FileLang, fileType: FileType)
         return `#ifndef ${m}
 #define ${m}
 
-#endif /*${m}*/`;
+#endif /*${m}*/\n`;
     }
     else if (lang === "C" && fileType === "Source") {
-        return `#include "${name}.h"
-`;
+        return `#include "${name}.h"\n`;
     }
     if (lang === "C++" && fileType === "Header") {
         const m = fileName2MacroName(name + ".h");
@@ -46,7 +45,7 @@ public:
 private:
 };
 
-#endif /*${m}*/`;
+#endif /*${m}*/\n`;
     }
     else if (lang === "C++" && fileType === "Source") {
         const classname = fileName2CppClassName(name);
@@ -58,8 +57,7 @@ ${classname}::${classname}()
 
 ${classname}::~${classname}()
 {
-}
-`;
+}\n`;
     }
     return "";
 }
