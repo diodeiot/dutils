@@ -96,10 +96,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 		const workspaceFolders = vscode.workspace.workspaceFolders;
 		if (!workspaceFolders || workspaceFolders.length < 1) {
+			console.log("no workspace found");
 			return;
 		}
 
-		if (workspaceFolders.length > 1) {
+		if (vscode.window.activeTextEditor) {
+			dir = path.dirname(vscode.window.activeTextEditor.document.uri.path);
+		}
+		else if (workspaceFolders.length > 1) {
 			const options: vscode.QuickPickOptions = {
 				title: "Please select a workspace",
 				placeHolder: "Workspace",
