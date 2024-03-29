@@ -44,3 +44,7 @@ All notable changes to this project will be documented in this file.
 - New Feature: Adding include guard when empty header file is created.
 - Fixed: Adding new lines between file content and adding include guard.
 - Fixed: Adding new line at the end of file.
+
+## Version 1.6.0
+
+- Default case sensitivity changed to "lower" case.

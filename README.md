@@ -39,12 +39,9 @@ This extension provides several commands in the Command Palette (<kbd>F1</kbd> o
 
 ## Release Notes
 
-### Version 1.5.0
+### Version 1.6.0
 
-- New Feature: Creating files in directory that active editor has.
-- New Feature: Adding include guard when empty header file is created.
-- Fixed: Adding new lines between file content and adding include guard.
-- Fixed: Adding new line at the end of file.
+- Default case sensitivity changed to "lower" case.
 
 ## Development
 Maintainer Kadir Sevil <<kadir.sevil@diodeiot.com>>
